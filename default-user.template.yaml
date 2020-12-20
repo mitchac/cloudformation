@@ -18,7 +18,7 @@ Resources:
       LoginProfile: 
         Password: ${Password}
       Policies:
-        - PolicyName: AmazonS3FullAccess 
+      - PolicyName: AmazonS3FullAccess 
  Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
