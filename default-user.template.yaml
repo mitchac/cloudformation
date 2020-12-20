@@ -29,5 +29,5 @@ Outputs:
   AccessKey:
     Value: !Ref AccessKey
   SecretKey:
-    Value: !GetAtt !Ref AccessKey.SecretAccessKey
+    Value: !GetAtt AccessKey.SecretAccessKey
 ...
