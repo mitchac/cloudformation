@@ -1,0 +1,25 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Creates default user for AWS account
+Parameters:
+    UserName:
+      Type: String
+      Description: The username of the user to be created
+    Password:
+      Type: String
+      Description: The password for the user to be created
+Resources:
+  DefaultUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: ${UserName}
+      Path : "/"
+      LoginProfile: 
+        Password: ${Password}
+      Policies:
+        - PolicyName: AmazonS3FullAccess 
+ Outputs:
+  DefaultUserArn:
+    Value: !GetAtt DefaultUser.Arn
+...
