@@ -5,12 +5,11 @@ Description: >-
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
-      -
-      Label:
-        default: Required
-      Parameters:
-        - UserName
-        - Password
+      - Label:
+          default: Required
+        Parameters:
+          - UserName
+          - Password
     ParameterLabels: 
       UserName: 
         default: "Enter the username of the user to be created"
