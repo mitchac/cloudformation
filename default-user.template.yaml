@@ -44,6 +44,7 @@ Resources:
       - arn:aws:iam::aws:policy/AWSLambda_FullAccess
       - arn:aws:iam::aws:policy/CloudWatchFullAccess
       - arn:aws:iam::aws:policy/AWSBatchFullAccess 
+      - arn:aws:iam::aws:policy/AmazonECS_FullAccess
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
