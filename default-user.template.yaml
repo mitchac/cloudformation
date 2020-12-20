@@ -22,7 +22,9 @@ Resources:
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
-      UserName: !GetAtt DefaultUser
+      UserName: !GetAtt 
+      - DefaultUser
+      - UserName
 Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
