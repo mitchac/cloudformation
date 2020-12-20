@@ -13,10 +13,10 @@ Resources:
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: !Sub ${UserName}
       Path : "/"
       LoginProfile: 
         Password: !Sub ${Password}
+      UserName: !Sub ${UserName}
 Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
