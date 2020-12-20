@@ -38,6 +38,7 @@ Resources:
       - arn:aws:iam::aws:policy/AmazonSSMFullAccess
       - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
       - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
+      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
