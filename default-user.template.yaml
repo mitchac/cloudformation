@@ -19,7 +19,14 @@ Resources:
         Password: !Sub ${Password}
       ManagedPolicyArns:
       - arn:aws:iam::aws:policy/AmazonS3FullAccess          
+  AccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName:
+      !Ref DefaultUser.Arn
 Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
+  AccessKeyArn:
+    Value: !GetAtt AccessKey.Arn
 ...
