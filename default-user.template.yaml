@@ -2,6 +2,14 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   Creates default user for AWS account
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      Label:
+        default: Required
+      Parameters:
+        - UserName
+        - Password
 Parameters:
     UserName:
       Type: String
