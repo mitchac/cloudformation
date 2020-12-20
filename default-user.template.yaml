@@ -5,6 +5,8 @@ Description: >-
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
+      - Label: 
+          default: "User details"
         Parameters:
           - UserName
           - Password
