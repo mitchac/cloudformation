@@ -8,15 +8,15 @@ Parameters:
       Description: The username of the user to be created
     Password:
       Type: String
-      Description: The password for the user to be created. This should include at least one upper case letter and one number. 
+      Description: The password for the user to be created. This should include at least one upper case letter and one number and should be at least 8 characters in length. 
 Resources:
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
+      UserName: !Sub ${UserName}
       Path : "/"
       LoginProfile: 
         Password: !Sub ${Password}
-      UserName: !Sub ${UserName}
 Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
