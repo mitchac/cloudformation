@@ -26,6 +26,8 @@ Resources:
 Outputs:
   DefaultUserArn:
     Value: !GetAtt DefaultUser.Arn
-  AccessKeyArn:
-    Value: !GetAtt AccessKey.Arn
+  AccessKey:
+    Value: !Ref AccessKey
+  SecretKey:
+    Value: !GetAtt Accesskey.SecretAccessKey
 ...
