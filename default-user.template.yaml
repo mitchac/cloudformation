@@ -8,7 +8,7 @@ Parameters:
       Description: The username of the user to be created
     Password:
       Type: String
-      Description: The password for the user to be created
+      Description: The password for the user to be created. This should include at least one upper case letter and one number. 
 Resources:
   DefaultUser:
     Type: AWS::IAM::User
