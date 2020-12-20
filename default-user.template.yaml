@@ -10,6 +10,11 @@ Metadata:
       Parameters:
         - UserName
         - Password
+    ParameterLabels: 
+      UserName: 
+        default: "Enter the username of the user to be created"
+      Password: 
+        default: "Enter the password for the user. This should include at least one upper case letter and one number and should be at least 8 characters in length."
 Parameters:
     UserName:
       Type: String
