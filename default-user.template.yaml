@@ -12,16 +12,16 @@ Metadata:
           - Password
     ParameterLabels: 
       UserName: 
-        default: "Enter the username of the user to be created"
+        default: "Username"
       Password: 
-        default: "Enter the password for the user. This should include at least one upper case letter and one number and should be at least 8 characters in length."
+        default: "Password"
 Parameters:
     UserName:
       Type: String
-      Description: The username of the user to be created
+      Description: The username of the user to be created.
     Password:
       Type: String
-      Description: The password for the user to be created. This should include at least one upper case letter and one number and should be at least 8 characters in length. 
+      Description: The password for the user. This should include at least one upper case letter and one number and should be at least 8 characters in length. 
 Resources:
   DefaultUser:
     Type: AWS::IAM::User
