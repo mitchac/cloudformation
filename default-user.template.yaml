@@ -23,6 +23,27 @@ Parameters:
       Type: String
       Description: The password for the user. This should include at least one upper case letter and one number and should be at least 8 characters in length. 
 Resources:
+  Admin:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: Admin
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
+      - arn:aws:iam::aws:policy/IAMFullAccess
+      - arn:aws:iam::aws:policy/AmazonS3FullAccess 
+  BatchSetup:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: BatchSetup
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+      - arn:aws:iam::aws:policy/AmazonSSMFullAccess
+      - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
+      - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
+      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
+      - arn:aws:iam::aws:policy/AWSLambda_FullAccess
+      - arn:aws:iam::aws:policy/CloudWatchFullAccess
+      - arn:aws:iam::aws:policy/AWSBatchFullAccess 
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
@@ -30,18 +51,9 @@ Resources:
       Path : "/"
       LoginProfile: 
         Password: !Sub ${Password}
-      ManagedPolicyArns:
-      - arn:aws:iam::aws:policy/AmazonS3FullAccess    
-      - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
-      - arn:aws:iam::aws:policy/AmazonEC2FullAccess
-      - arn:aws:iam::aws:policy/IAMFullAccess
-      - arn:aws:iam::aws:policy/AmazonSSMFullAccess
-      - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
-      - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
-      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
-      - arn:aws:iam::aws:policy/AWSLambda_FullAccess
-      - arn:aws:iam::aws:policy/CloudWatchFullAccess
-      - arn:aws:iam::aws:policy/AWSBatchFullAccess
+      Groups: 
+        - Admin
+        - BatchSetup
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
