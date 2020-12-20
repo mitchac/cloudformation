@@ -52,8 +52,8 @@ Resources:
       LoginProfile: 
         Password: !Sub ${Password}
       Groups: 
-        - Admin
-        - BatchSetup
+        - !Ref Admin
+        - !Ref BatchSetup
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
