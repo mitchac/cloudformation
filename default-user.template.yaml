@@ -38,13 +38,18 @@ Resources:
       ManagedPolicyArns: 
       - arn:aws:iam::aws:policy/AmazonEC2FullAccess
       - arn:aws:iam::aws:policy/AmazonSSMFullAccess
-      - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
-      - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
-      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
       - arn:aws:iam::aws:policy/AWSLambda_FullAccess
       - arn:aws:iam::aws:policy/CloudWatchFullAccess
       - arn:aws:iam::aws:policy/AWSBatchFullAccess 
       - arn:aws:iam::aws:policy/AmazonECS_FullAccess
+  AWSCode:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: AWSCode
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
+      - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
+      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
@@ -55,6 +60,7 @@ Resources:
       Groups: 
         - !Ref Admin
         - !Ref BatchSetup
+        #- !Ref AWSCode
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
