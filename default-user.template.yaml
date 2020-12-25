@@ -64,7 +64,8 @@ Resources:
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
-      UserName: !Ref UserName
+      #UserName: !Ref UserName
+      UserName: !GetAtt DefaultUser.UserName
 Outputs:
   UserName:
     Value: !Ref UserName
