@@ -66,7 +66,7 @@ Resources:
     Properties:
       UserName: !Ref UserName
       #UserName: !GetAtt DefaultUser.UserName
-      DependsOn: DefaultUser
+    DependsOn: DefaultUser
 Outputs:
   UserName:
     Value: !Ref UserName
