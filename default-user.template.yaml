@@ -50,6 +50,12 @@ Resources:
       - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
       - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
       - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
+  Lambda:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: Lambda
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AWSLambdaFullAccess
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
@@ -61,6 +67,7 @@ Resources:
         - !Ref Admin
         - !Ref BatchSetup
         #- !Ref AWSCode
+        - !Ref Lambda
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
