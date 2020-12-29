@@ -1,5 +1,14 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: 'AWS Batch via Fargate'
+Parameters:
+  YourVpcId:
+    Type: String
+  YourSubnet1:
+    Type: String
+  YourSubnet2:          
+    Type: String
+  TodoBucket:
+    Type: String
 Resources:
   ComputeEnvironment:
     Type: AWS::Batch::ComputeEnvironment
