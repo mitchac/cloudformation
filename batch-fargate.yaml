@@ -90,7 +90,7 @@ Resources:
       PlatformCapabilities:
       - FARGATE
       Timeout:
-        AttemptDurationSeconds: 30
+        AttemptDurationSeconds: 60
       RetryStrategy:
         Attempts: 1
       ContainerProperties:
