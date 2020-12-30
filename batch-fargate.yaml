@@ -9,6 +9,10 @@ Parameters:
     Type: String
   TodoBucket:
     Type: String
+  Url:
+    Type: String
+  Filename:
+    Type: String
 Resources:
   ComputeEnvironment:
     Type: AWS::Batch::ComputeEnvironment
@@ -102,12 +106,8 @@ Resources:
           - P33001 
           - -i 
           - /root/.aspera/cli/etc/asperaweb_id_dsa.openssh 
-          - Fn::Join:
-              - '-'
-              - Fn::Split:
-                - '-'
-                - era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz
-          - SRR12118866_1.fastq.gz
+          - {!Ref Url}
+          - {!Ref Filename}
         Image: 'ibmcom/aspera-cli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
