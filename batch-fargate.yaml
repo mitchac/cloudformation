@@ -148,6 +148,13 @@ Resources:
   StepFunctionsExecutionRole:
     Type: AWS::IAM::Role
     Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: states.amazonaws.com
+            Action: "sts:AssumeRole"
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole'
         - 'arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess'
