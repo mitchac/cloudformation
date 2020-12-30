@@ -95,9 +95,8 @@ Resources:
         Attempts: 1
       ContainerProperties:
         Command:
-        - echo
-        - hello
-        - world
+        - ascp
+        - --version
         Image: 'mitchac/asperacli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
