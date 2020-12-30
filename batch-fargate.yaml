@@ -86,7 +86,7 @@ Resources:
     Type: AWS::Batch::JobDefinition
     Properties:
       Type: container
-      JobDefinitionName: ascp_test_job_def2
+      JobDefinitionName: ascp_test_job_def
       PlatformCapabilities:
       - FARGATE
       Timeout:
@@ -102,8 +102,7 @@ Resources:
         - P33001 
         - -i 
         - /root/.aspera/cli/etc/asperaweb_id_dsa.openssh 
-        - 
-          era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz
+        > era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz
         - SRR12118866_1.fastq.gz
         Image: 'ibmcom/aspera-cli:latest'
         NetworkConfiguration:
