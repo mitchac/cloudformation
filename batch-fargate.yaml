@@ -9,10 +9,6 @@ Parameters:
     Type: String
   TodoBucket:
     Type: String
-  Url:
-    Type: String
-  Filename:
-    Type: String
 Resources:
   ComputeEnvironment:
     Type: AWS::Batch::ComputeEnvironment
