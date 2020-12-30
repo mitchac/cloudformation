@@ -207,7 +207,7 @@ Resources:
               "End": true
             }
           }
-        },
+        }
       RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   LogGroup:
     Type: AWS::Logs::LogGroup
