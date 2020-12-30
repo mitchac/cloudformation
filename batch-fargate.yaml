@@ -94,7 +94,7 @@ Resources:
       RetryStrategy:
         Attempts: 1
       ContainerProperties:
-        Image: 'ibmcom/aspera-cli:latest'
+        Image: 'mitchac/asperacli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
         ResourceRequirements:
