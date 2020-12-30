@@ -189,16 +189,17 @@ Resources:
             "Hello": {
               "Type": "Task",
               "Resource": "arn:aws:states:::batch:submitJob.sync",
-              "Parameters": {  
+              "Parameters": {
                 "JobDefinition": "ascp_test_job_def",
                 "JobName": "SfnBatchtest",
                 "JobQueue": "JobQueue",
                 "ContainerOverrides": {
-                  "Command": [
-                    "ascp --version"
-                  ]
-                },
-              "Next": "World"
+                   "Command": [
+                     "ascp --version"
+                   ]
+                }
+              },
+             "Next": "World"
             },
             "World": {
               "Type": "Pass",
@@ -206,7 +207,7 @@ Resources:
               "End": true
             }
           }
-        }
+        },
       RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   LogGroup:
     Type: AWS::Logs::LogGroup
