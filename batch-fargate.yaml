@@ -96,7 +96,7 @@ Resources:
       ContainerProperties:
         Command:
         - ascp
-        - --version
+        #- --version
         Image: 'mitchac/asperacli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
@@ -214,6 +214,10 @@ Resources:
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
+                    "Command": [
+                    "ascp",
+                    "--version"
+                    ]
                   }
                 },
                 "Next": "World"
