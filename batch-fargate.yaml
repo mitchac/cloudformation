@@ -158,6 +158,19 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole'
         - 'arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess'
+      Policies:
+      -
+        PolicyName: cfevents
+        PolicyDocument:
+          Version: 2012-10-17
+          Statement:
+          - Effect: Allow
+            Action:
+            - events:PutTargets
+            - events:PutRule
+            - events:DescribeRule
+            Resource: 
+            - !Sub arn:${AWS::Partition}:events:${AWS::Region}:${AWS::AccountId}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
   SfnStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
