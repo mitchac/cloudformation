@@ -215,9 +215,6 @@ Resources:
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
-                    #"Command": [
-                    #  "ascp --version"
-                    #]
                   }
                 },
                 "Next": "World"
