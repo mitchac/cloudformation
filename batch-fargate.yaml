@@ -156,9 +156,10 @@ Resources:
               Service: states.amazonaws.com
             Action: "sts:AssumeRole"
       ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole'
+        #- 'arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole'
         - 'arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess'
         - 'arn:aws:iam::aws:policy/CloudWatchEventsFullAccess'
+        - 'arn:aws:iam::aws:policy/AWSBatchFullAccess'
       Policies:
       -
         PolicyName: cfevents
