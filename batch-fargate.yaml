@@ -94,6 +94,10 @@ Resources:
       RetryStrategy:
         Attempts: 1
       ContainerProperties:
+        Command:
+        - echo
+        - hello
+        - world
         Image: 'mitchac/asperacli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
@@ -211,9 +215,9 @@ Resources:
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
-                    "Command": [
-                      "ascp --version"
-                    ]
+                    #"Command": [
+                    #  "ascp --version"
+                    #]
                   }
                 },
                 "Next": "World"
