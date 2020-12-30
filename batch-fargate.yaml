@@ -145,6 +145,33 @@ Resources:
               Action: [ 's3:GetObject', 's3:PutObject' ]
               Resource:
               - !Join ['', ['arn:aws:s3:::', { Ref: TodoBucket }, '/*' ] ]
+  StepFunctionsExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole'
+        - 'arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess'
+  SfnStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      DefinitionString: 
+        {
+          "Comment": "A Hello World example of the Amazon States Language using Pass states",
+          "StartAt": "Hello",
+          "States": {
+            "Hello": {
+              "Type": "Pass",
+              "Result": "Hello",
+              "Next": "World"
+            },
+            "World": {
+              "Type": "Pass",
+              "Result": "World",
+              "End": true
+            }
+          }
+        }
+      RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   LogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
