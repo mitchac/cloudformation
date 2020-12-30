@@ -215,8 +215,7 @@ Resources:
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
                     "Command": [
-                    "ascp",
-                    "--version"
+                      "ascp --version"
                     ]
                   }
                 },
