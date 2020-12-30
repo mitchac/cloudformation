@@ -86,7 +86,7 @@ Resources:
     Type: AWS::Batch::JobDefinition
     Properties:
       Type: container
-      JobDefinitionName: ascp_test_job_def
+      JobDefinitionName: ascp_test_job_def2
       PlatformCapabilities:
       - FARGATE
       Timeout:
