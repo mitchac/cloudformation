@@ -190,10 +190,9 @@ Resources:
               "Type": "Task",
               "Resource": "arn:aws:states:::batch:submitJob.sync",
               "Parameters": {  
-                "JobDefinition": "SfnBatchtest",
+                "JobDefinition": "ascp_test_job_def",
                 "JobName": "SfnBatchtest",
-                "JobQueue": "SecondaryQueue",
-                "Parameters.$": "$.batchjob.parameters",
+                "JobQueue": "JobQueue",
                 "ContainerOverrides": {
                   "Command": [
                     "ascp --version"
