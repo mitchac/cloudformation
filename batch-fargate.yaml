@@ -226,7 +226,7 @@ Resources:
             }
           }
         - {
-          JobQueue: !GetAtt [ JobQueue, Arn ]
+          JobQueue: !Ref JobQueue
           }
       RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   LogGroup:
