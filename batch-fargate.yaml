@@ -102,7 +102,7 @@ Resources:
         - P33001 
         - -i 
         - /root/.aspera/cli/etc/asperaweb_id_dsa.openssh 
-        > era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz
+        - era\-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz
         - SRR12118866_1.fastq.gz
         Image: 'ibmcom/aspera-cli:latest'
         NetworkConfiguration:
