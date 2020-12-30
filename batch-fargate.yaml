@@ -51,37 +51,37 @@ Resources:
     Properties:
       VpcId: !Ref YourVpcId
       GroupDescription: 'Security Group for Batch job'
-  JobDefinition:
-    Type: AWS::Batch::JobDefinition
-    Properties:
-      Type: container
-      JobDefinitionName: { Ref: "AWS::StackName" }
-      PlatformCapabilities:
-      - FARGATE
-      Timeout:
-        AttemptDurationSeconds: 60
-      RetryStrategy:
-        Attempts: 1
-      ContainerProperties:
-        Command:
-        - echo
-        - hello
-        - worldo
-        Image: 'debian:latest'
-        NetworkConfiguration:
-          AssignPublicIp: ENABLED
-        ResourceRequirements:
-        - Type: VCPU
-          Value: 0.5
-        - Type: MEMORY
-          Value: 1024
-        JobRoleArn: !GetAtt JobRole.Arn
-        ExecutionRoleArn: !GetAtt ExecutionRole.Arn
-        LogConfiguration:
-          LogDriver: awslogs
-          Options:
-            "awslogs-group": !Ref LogGroup
-            "awslogs-stream-prefix": "prefix"
+ # JobDefinition:
+ #   Type: AWS::Batch::JobDefinition
+ #   Properties:
+ #     Type: container
+ #     JobDefinitionName: { Ref: "AWS::StackName" }
+ #     PlatformCapabilities:
+ #     - FARGATE
+ #     Timeout:
+ #       AttemptDurationSeconds: 60
+ #     RetryStrategy:
+ #       Attempts: 1
+ #     ContainerProperties:
+ #       Command:
+ #       - echo
+ #       - hello
+ #       - worldo
+ #       Image: 'debian:latest'
+ #       NetworkConfiguration:
+ #         AssignPublicIp: ENABLED
+ #         ResourceRequirements:
+ #       - Type: VCPU
+ #         Value: 0.5
+ #       - Type: MEMORY
+ #         Value: 1024
+ #       JobRoleArn: !GetAtt JobRole.Arn
+ #       ExecutionRoleArn: !GetAtt ExecutionRole.Arn
+ #       LogConfiguration:
+ #         LogDriver: awslogs
+ #         Options:
+ #           "awslogs-group": !Ref LogGroup
+ #           "awslogs-stream-prefix": "prefix"
   JobDefinition:
     Type: AWS::Batch::JobDefinition
     Properties:
@@ -139,15 +139,15 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       # Policy for the Job to access resources on AWS. Adapt as necessary
-      Policies:
-      - PolicyName: BucketAccess
-        PolicyDocument:
-          Version: 2012-10-17
-          Statement:
-            - Effect: Allow
-              Action: [ 's3:GetObject', 's3:PutObject' ]
-              Resource:
-              - !Join ['', ['arn:aws:s3:::', { Ref: TodoBucket }, '/*' ] ]
+ #     Policies:
+ #     - PolicyName: BucketAccess
+ #       PolicyDocument:
+ #         Version: 2012-10-17
+ #         Statement:
+ #           - Effect: Allow
+ #             Action: [ 's3:GetObject', 's3:PutObject' ]
+ #             Resource:
+ #             - !Join ['', ['arn:aws:s3:::', { Ref: TodoBucket }, '/*' ] ]
   StepFunctionsExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -163,40 +163,40 @@ Resources:
         - 'arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess'
         - 'arn:aws:iam::aws:policy/CloudWatchEventsFullAccess'
         - 'arn:aws:iam::aws:policy/AWSBatchFullAccess'
-      Policies:
-      -
-        PolicyName: cfevents
-        PolicyDocument:
-          Version: 2012-10-17
-          Statement:
-          - Effect: Allow
-            Action:
-            - events:PutTargets
-            - events:PutRule
-            - events:DescribeRule
-            Resource: 
-            - !Sub arn:${AWS::Partition}:events:${AWS::Region}:${AWS::AccountId}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
-  SfnStateMachine:
-    Type: AWS::StepFunctions::StateMachine
-    Properties:
-      DefinitionString: |-
-        {
-          "Comment": "A Hello World example of the Amazon States Language using Pass states",
-          "StartAt": "Hello",
-          "States": {
-            "Hello": {
-              "Type": "Pass",
-              "Result": "Hello",
-              "Next": "World"
-            },
-            "World": {
-              "Type": "Pass",
-              "Result": "World",
-              "End": true
-            }
-          }
-        }
-      RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
+  #    Policies:
+  #    -
+  #      PolicyName: cfevents
+  #      PolicyDocument:
+  #        Version: 2012-10-17
+  #        Statement:
+  #        - Effect: Allow
+  #          Action:
+  #          - events:PutTargets
+  #          - events:PutRule
+  #          - events:DescribeRule
+  #          Resource: 
+  #          - !Sub arn:${AWS::Partition}:events:${AWS::Region}:${AWS::AccountId}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
+  #SfnStateMachine:
+  #  Type: AWS::StepFunctions::StateMachine
+  #  Properties:
+  #    DefinitionString: |-
+  #      {
+  #        "Comment": "A Hello World example of the Amazon States Language using Pass states",
+  #        "StartAt": "Hello",
+  #        "States": {
+  #          "Hello": {
+  #            "Type": "Pass",
+  #            "Result": "Hello",
+  #            "Next": "World"
+  #          },
+  #          "World": {
+  #            "Type": "Pass",
+  #            "Result": "World",
+  #            "End": true
+  #          }
+  #        }
+  #      }
+  #    RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   BatchFargateStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
