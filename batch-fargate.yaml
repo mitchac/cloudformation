@@ -197,7 +197,7 @@ Resources:
                   "Command": [
                     "ascp --version"
                   ]
-                }
+                },
               "Next": "World"
             },
             "World": {
