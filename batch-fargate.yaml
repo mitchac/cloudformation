@@ -161,7 +161,7 @@ Resources:
   SfnStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
-      DefinitionString: 
+      DefinitionString: |-
         {
           "Comment": "A Hello World example of the Amazon States Language using Pass states",
           "StartAt": "Hello",
