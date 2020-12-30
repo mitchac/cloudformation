@@ -95,7 +95,11 @@ Resources:
         Attempts: 1
       ContainerProperties:
         Command:
-          - "ascp -QT -l 300m P33001 -i /root/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz SRR12118866_1.fastq.gz"
+          Fn::Join:
+            - '-'
+            - Fn::Split:
+              - '-'
+              - "ascp -QT -l 300m P33001 -i /root/.aspera/cli/etc/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:vol1/fastq/SRR121/066/SRR12118866/SRR12118866_1.fastq.gz SRR12118866_1.fastq.gz"
         Image: 'ibmcom/aspera-cli:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
