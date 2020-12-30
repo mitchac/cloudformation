@@ -197,32 +197,37 @@ Resources:
   BatchFargateStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
-      DefinitionString: |-
-        {
-          "StartAt": "Hello",
-          "States": {
-            "Hello": {
-              "Type": "Task",
-              "Resource": "arn:aws:states:::batch:submitJob.sync",
-              "Parameters": {
-                "JobDefinition": "ascp_test_job_def",
-                "JobName": "SfnBatchtest",
-                "JobQueue": "JobQueue",
-                "ContainerOverrides": {
-                   "Command": [
-                     "ascp --version"
-                   ]
-                }
+      DefinitionString: 
+        !Sub
+        - |-
+          {
+            "StartAt": "Hello",
+            "States": {
+              "Hello": {
+                "Type": "Task",
+                "Resource": "arn:aws:states:::batch:submitJob.sync",
+                "Parameters": {
+                  "JobDefinition": "ascp_test_job_def",
+                  "JobName": "SfnBatchtest",
+                  "JobQueue": "${JobQueue}",
+                  "ContainerOverrides": {
+                    "Command": [
+                      "ascp --version"
+                    ]
+                  }
+                },
+                "Next": "World"
               },
-             "Next": "World"
-            },
-            "World": {
-              "Type": "Pass",
-              "Result": "World",
-              "End": true
+              "World": {
+                "Type": "Pass",
+                "Result": "World",
+                "End": true
+              }
             }
           }
-        }
+        - {
+          JobQueue: !GetAtt [ JobQueue, Arn ]
+          }
       RoleArn: !GetAtt [ StepFunctionsExecutionRole, Arn ]
   LogGroup:
     Type: AWS::Logs::LogGroup
