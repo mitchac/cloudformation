@@ -55,6 +55,9 @@ Resources:
     Type: AWS::Batch::JobDefinition
     Properties:
       Type: container
+      Parameters:
+        command: "get-asperacli-version"
+        arg: "-h"
       JobDefinitionName: ascp_test_job_def
       PlatformCapabilities:
       - FARGATE
@@ -64,9 +67,9 @@ Resources:
         Attempts: 1
       ContainerProperties:
         Command:
-        - echo
-        - 456
-        Image: 'ubuntu:latest'
+          - Ref::command
+          - Ref::arg
+        Image: 'mitchac/asperacli:aws'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
         ResourceRequirements:
@@ -147,14 +150,7 @@ Resources:
                   "JobDefinition": "ascp_test_job_def",
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
-                  "ContainerOverrides": {
-                    "Environment": [
-                      {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
-                    ],
-                    "Command": [
-                      "echo "
-                    ]
-                  }
+                  "Parameters.$": "$.asperacli.parameters"
                 },
                 "Next": "World"
               },
