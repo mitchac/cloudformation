@@ -64,8 +64,8 @@ Resources:
         Attempts: 1
       ContainerProperties:
         Command:
-        - ascp
-        #- --version
+        - echo
+        - 456
         Image: 'ubuntu:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
@@ -150,10 +150,6 @@ Resources:
                   "ContainerOverrides": {
                     "Environment": [
                       {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
-                    ],
-                    "Command": [
-                      "echo",
-                      "${!SAMPLE_ID}"
                     ]
                   }
                 },
