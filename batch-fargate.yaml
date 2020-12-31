@@ -206,6 +206,14 @@ Resources:
           {
             "StartAt": "Hello",
             "States": {
+              "Initialize": {
+                "Type": "Pass",
+                "InputPath": "$",
+                "Parameters": {
+                  "params.$": "$.params",
+                },
+                "Next": "World"
+              },
               "Hello": {
                 "Type": "Task",
                 "InputPath": "$",
