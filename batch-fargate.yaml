@@ -222,7 +222,7 @@ Resources:
                     ],
                     "Command": [
                       "echo",
-                      ${!SAMPLE_ID}
+                      "${!SAMPLE_ID}"
                     ]
                   }
                 },
