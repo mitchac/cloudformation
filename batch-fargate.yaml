@@ -148,7 +148,9 @@ Resources:
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
-                    "Command": "$.command"
+                    "Command": [
+                      "$.command"
+                    ]
                   }
                 },
                 "Next": "World"
