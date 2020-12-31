@@ -150,7 +150,7 @@ Resources:
                   "JobDefinition": "ascp_test_job_def",
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
-                  "Parameters.$": "$params.asperacli.parameters"
+                  "Parameters.$": "$params.asperacli"
                 },
                 "Next": "World"
               },
