@@ -149,7 +149,7 @@ Resources:
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
                     "Name": "container-name",
-                    "Command.$": "$.command"
+                    #"Command.$": "$.command"
                   }
                 },
                 "Next": "World"
