@@ -66,7 +66,7 @@ Resources:
         Command:
         - ascp
         #- --version
-        Image: 'mitchac/asperacli:latest'
+        Image: 'ubuntu:latest'
         NetworkConfiguration:
           AssignPublicIp: ENABLED
         ResourceRequirements:
