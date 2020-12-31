@@ -148,13 +148,8 @@ Resources:
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
                   "ContainerOverrides": {
-                    "Environment": [
-                      {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
-                    ],
-                    "Command": [
-                      "echo",
-                      ${!SAMPLE_ID}
-                    ]
+                    "Name": "container-name",
+                    "Command.$": "$.command"
                   }
                 },
                 "Next": "World"
