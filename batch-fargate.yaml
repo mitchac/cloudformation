@@ -152,9 +152,10 @@ Resources:
                       {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
                     ],
                     "Command": [
-                      "echo "
+                      "echo"
                     ]
-                  },
+                  }
+                },
                 "Next": "World"
               },
               "World": {
