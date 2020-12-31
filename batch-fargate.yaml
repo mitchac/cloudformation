@@ -210,7 +210,7 @@ Resources:
                 "Type": "Pass",
                 "InputPath": "$",
                 "Parameters": {
-                  "params.$": "$.params",
+                  "params.$": "$.params"
                 },
                 "Next": "World"
               },
