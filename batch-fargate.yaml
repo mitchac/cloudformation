@@ -150,9 +150,11 @@ Resources:
                   "ContainerOverrides": {
                     "Environment": [
                       {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
+                    ],
+                    "Command": [
+                      "echo "
                     ]
-                  }
-                },
+                  },
                 "Next": "World"
               },
               "World": {
