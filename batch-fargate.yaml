@@ -152,8 +152,7 @@ Resources:
                       {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
                     ],
                     "Command": [
-                      "echo",
-                      "${!SAMPLE_ID}"
+                      "echo ${!SAMPLE_ID}"
                     ]
                   }
                 },
