@@ -212,7 +212,7 @@ Resources:
                 "Parameters": {
                   "params.$": "$.params"
                 },
-                "Next": "World"
+                "Next": "Hello"
               },
               "Hello": {
                 "Type": "Task",
