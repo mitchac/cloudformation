@@ -147,7 +147,6 @@ Resources:
                   "JobDefinition": "ascp_test_job_def",
                   "JobName": "SfnBatchtest",
                   "JobQueue": "${JobQueue}",
-                  "params.$": "$.params",
                   "ContainerOverrides": {
                     "Environment": [
                       {"Name": "SAMPLE_ID", "Value.$": "$.params.SAMPLE_ID"}
