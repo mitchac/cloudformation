@@ -109,6 +109,7 @@ Resources:
         - !Ref Admin
         - !Ref BatchSetup
         - !Ref AWSCode
+        - !Ref Cromwell
         #- !Ref Lambda
   AccessKey:
     Type: AWS::IAM::AccessKey
