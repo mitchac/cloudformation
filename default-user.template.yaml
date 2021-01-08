@@ -65,7 +65,20 @@ Resources:
           - Effect: Allow
             Principal:
               AWS: 
-                - !GetAtt DefaultUser.arn
+                {
+                "Fn::Join": [
+                  ":",
+                  [
+                    "arn:aws:iam:",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    {
+                      "Ref": "UserName"
+                    }
+                  ]
+                ]
+                }
             Action:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
