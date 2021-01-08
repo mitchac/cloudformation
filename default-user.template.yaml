@@ -73,6 +73,7 @@ Resources:
                     {
                       "Ref": "AWS::AccountId"
                     },
+                    "user/",
                     {
                       "Ref": "UserName"
                     }
