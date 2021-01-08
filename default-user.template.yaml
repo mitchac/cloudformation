@@ -73,12 +73,17 @@ Resources:
                     {
                       "Ref": "AWS::AccountId"
                     },
-                    "user/",
                     {
-                      "Ref": "UserName"
+                    "Fn::Join": [
+                      "",
+                      [
+                        "user/",
+                        {
+                          "Ref": "UserName"
+                        }
+                      ]
                     }
                   ]
-                ]
                 }
             Action:
               - 'sts:AssumeRole'
