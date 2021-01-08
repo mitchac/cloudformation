@@ -90,7 +90,7 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/AdministratorAccess
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
       RoleName: S3role
   DefaultUser:
     Type: AWS::IAM::User
@@ -102,8 +102,8 @@ Resources:
       Groups: 
         - !Ref Admin
         - !Ref BatchSetup
-        #- !Ref AWSCode
-        - !Ref Lambda
+        - !Ref AWSCode
+        #- !Ref Lambda
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
