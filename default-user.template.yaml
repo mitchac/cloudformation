@@ -56,6 +56,12 @@ Resources:
       GroupName: Lambda
       ManagedPolicyArns: 
       - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+  Cromwell:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: Cromwell
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AmazonRDSFullAccess
   S3role:
     Type: AWS::IAM::Role
     Properties:
