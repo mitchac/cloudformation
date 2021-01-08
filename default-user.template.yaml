@@ -66,25 +66,26 @@ Resources:
             Principal:
               AWS: 
                 {
-                "Fn::Join": [
-                  ":",
-                  [
-                    "arn:aws:iam:",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "user/",
-                        {
-                          "Ref": "UserName"
-                        }
-                      ]
+                  "Fn::Join": [
+                    ":",
+                    [
+                      "arn:aws:iam:",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "user/",
+                            {
+                              "Ref": "UserName"
+                            }
+                          ]
+                        ]
+                      }
                     ]
                   ]
-                ]
                 }
             Action:
               - 'sts:AssumeRole'
