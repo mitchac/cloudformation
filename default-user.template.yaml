@@ -82,8 +82,9 @@ Resources:
                           "Ref": "UserName"
                         }
                       ]
-                    }
+                    ]
                   ]
+                ]
                 }
             Action:
               - 'sts:AssumeRole'
