@@ -56,6 +56,21 @@ Resources:
       GroupName: Lambda
       ManagedPolicyArns: 
       - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+  S3role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: 
+                - !Sub ${UserName}
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+      RoleName: S3role
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
