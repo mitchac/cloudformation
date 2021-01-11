@@ -64,7 +64,9 @@ Resources:
       - arn:aws:iam::aws:policy/AmazonRDSFullAccess
   S3role:
     Type: AWS::IAM::Role
+    DependsOn: DefaultUser
     Properties:
+      RoleName: S3role
       AssumeRolePolicyDocument:
         Version: 2012-10-17
         Statement:
@@ -97,8 +99,6 @@ Resources:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
-      RoleName: S3role
-    DependsOn: DefaultUser
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
