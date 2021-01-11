@@ -98,7 +98,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
       RoleName: S3role
-      DependsOn: DefaultUser
+    DependsOn: DefaultUser
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
