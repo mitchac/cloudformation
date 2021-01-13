@@ -13,15 +13,10 @@ Metadata:
     ParameterLabels: 
       UserName: 
         default: "Username"
-      Password: 
-        default: "Password"
 Parameters:
     UserName:
       Type: String
       Description: The username of the user to be created.
-    Password:
-      Type: String
-      Description: The password for the user. This should include at least one upper case letter and one number and should be at least 8 characters in length. 
 Resources:
   Admin:
     Type: AWS::IAM::Group
@@ -104,8 +99,6 @@ Resources:
     Properties:
       UserName: !Sub ${UserName}
       Path : "/"
-      LoginProfile: 
-        Password: !Sub ${Password}
       Groups: 
         - !Ref Admin
         - !Ref BatchSetup
@@ -121,8 +114,6 @@ Resources:
 Outputs:
   UserName:
     Value: !Ref UserName
-  Password:
-    Value: !Ref Password
   AccessKey:
     Value: !Ref AccessKey
   SecretKey:
