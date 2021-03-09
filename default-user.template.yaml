@@ -23,11 +23,25 @@ Resources:
       GroupName: Admin
       ManagedPolicyArns: 
       - arn:aws:iam::aws:policy/AdministratorAccess
+  PasswordSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      GenerateSecretString:
+        #SecretStringTemplate: '{"username": "jenkins"}'
+        GenerateStringKey: password
+        ExcludeLowercase: False
+        ExcludeUppercase: False
+        IncludeSpace: False
+        RequireEachIncludedType: True
+        PasswordLength: 20
+        ExcludeCharacters: '<>%`|;,."'
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
       UserName: !Sub ${UserName}
       Path : "/"
+      LoginProfile:
+        Password: !Join ['', ['{{resolve:secretsmanager:', !Ref PasswordSecret, ':SecretString:password}}' ]]
       Groups: 
         - !Ref Admin
   AccessKey:
@@ -38,6 +52,8 @@ Resources:
 Outputs:
   UserName:
     Value: !Ref UserName
+  Password:
+    Value: !Join ['', ['{{resolve:secretsmanager:', !Ref PasswordSecret, ':SecretString:password}}' ]]
   AccessKey:
     Value: !Ref AccessKey
   SecretKey:
