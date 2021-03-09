@@ -1,7 +1,7 @@
 ---
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  Creates default user for AWS account
+  Creates default ADMIN user for AWS account
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -9,7 +9,6 @@ Metadata:
           default: "User details"
         Parameters:
           - UserName
-          - Password
     ParameterLabels: 
       UserName: 
         default: "Username"
@@ -23,77 +22,7 @@ Resources:
     Properties: 
       GroupName: Admin
       ManagedPolicyArns: 
-      - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
-      - arn:aws:iam::aws:policy/IAMFullAccess
-      - arn:aws:iam::aws:policy/AmazonS3FullAccess 
-  BatchSetup:
-    Type: AWS::IAM::Group
-    Properties: 
-      GroupName: BatchSetup
-      ManagedPolicyArns: 
-      - arn:aws:iam::aws:policy/AmazonEC2FullAccess
-      - arn:aws:iam::aws:policy/AmazonSSMFullAccess
-      - arn:aws:iam::aws:policy/AWSLambda_FullAccess
-      - arn:aws:iam::aws:policy/CloudWatchFullAccess
-      - arn:aws:iam::aws:policy/AWSBatchFullAccess 
-      - arn:aws:iam::aws:policy/AmazonECS_FullAccess
-  AWSCode:
-    Type: AWS::IAM::Group
-    Properties: 
-      GroupName: AWSCode
-      ManagedPolicyArns: 
-      - arn:aws:iam::aws:policy/AWSCodeBuildAdminAccess
-      - arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess
-      - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
-  Lambda:
-    Type: AWS::IAM::Group
-    Properties: 
-      GroupName: Lambda
-      ManagedPolicyArns: 
-      - arn:aws:iam::aws:policy/AWSLambdaFullAccess
-  Cromwell:
-    Type: AWS::IAM::Group
-    Properties: 
-      GroupName: Cromwell
-      ManagedPolicyArns: 
-      - arn:aws:iam::aws:policy/AmazonRDSFullAccess
-  S3role:
-    Type: AWS::IAM::Role
-    DependsOn: DefaultUser
-    Properties:
-      RoleName: S3role
-      AssumeRolePolicyDocument:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Principal:
-              AWS: 
-                {
-                  "Fn::Join": [
-                    ":",
-                    [
-                      "arn:aws:iam:",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "user/",
-                            {
-                              "Ref": "UserName"
-                            }
-                          ]
-                        ]
-                      }
-                    ]
-                  ]
-                }
-            Action:
-              - 'sts:AssumeRole'
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      - arn:aws:iam::aws:policy/AdministratorAccess
   DefaultUser:
     Type: AWS::IAM::User
     Properties:
@@ -101,15 +30,10 @@ Resources:
       Path : "/"
       Groups: 
         - !Ref Admin
-        - !Ref BatchSetup
-        - !Ref AWSCode
-        - !Ref Cromwell
-        #- !Ref Lambda
   AccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
       UserName: !Ref UserName
-      #UserName: !GetAtt DefaultUser.UserName
     DependsOn: DefaultUser
 Outputs:
   UserName:
