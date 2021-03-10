@@ -52,8 +52,6 @@ Resources:
 Outputs:
   UserName:
     Value: !Ref UserName
-  Password:
-    Value: !Ref PasswordSecret
   AccessKey:
     Value: !Ref AccessKey
   SecretKey:
