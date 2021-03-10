@@ -53,7 +53,7 @@ Outputs:
   UserName:
     Value: !Ref UserName
   Password:
-    Value: !Join ['', ['{{resolve:secretsmanager:', !Ref PasswordSecret, ':SecretString:password}}' ]]
+    Value: !Ref PasswordSecret
   AccessKey:
     Value: !Ref AccessKey
   SecretKey:
