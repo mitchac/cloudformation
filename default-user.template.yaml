@@ -27,7 +27,7 @@ Resources:
     Type: AWS::SecretsManager::Secret
     Properties:
       GenerateSecretString:
-        #SecretStringTemplate: '{"username": "jenkins"}'
+        SecretStringTemplate: '{"user": "admin"}'
         GenerateStringKey: password
         ExcludeLowercase: False
         ExcludeUppercase: False
