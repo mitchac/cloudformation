@@ -8,7 +8,7 @@ Metadata:
       - Label: 
           default: "User details"
         Parameters:
-          - UserName
+          - admin
     ParameterLabels: 
       UserName: 
         default: "Username"
