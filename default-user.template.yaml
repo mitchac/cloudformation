@@ -33,7 +33,7 @@ Resources:
         ExcludeUppercase: False
         IncludeSpace: False
         RequireEachIncludedType: True
-        PasswordLength: 20
+        PasswordLength: 15
         ExcludeCharacters: '<>%`|;,."'
   DefaultUser:
     Type: AWS::IAM::User
