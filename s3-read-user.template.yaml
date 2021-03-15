@@ -1,1 +1,46 @@
-
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Creates user with s3 read permissions for AWS account
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label: 
+          default: "User details"
+        Parameters:
+          - UserName
+    ParameterLabels: 
+      UserName: 
+        default: "Enter the username for the user to be created. Unless otherwise "
+Parameters:
+    UserName:
+      Type: String
+      Description: The username of the user to be created.
+      Default : "s3user"
+Resources:
+  s3Read:
+    Type: AWS::IAM::Group
+    Properties: 
+      GroupName: s3Read
+      ManagedPolicyArns: 
+      - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+  s3User:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Sub ${UserName}
+      Path : "/"
+      Groups: 
+        - !Ref s3Read
+  AccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref UserName
+    DependsOn: DefaultUser
+Outputs:
+  UserName:
+    Value: !Ref UserName
+  AccessKey:
+    Value: !Ref AccessKey
+  SecretKey:
+    Value: !GetAtt AccessKey.SecretAccessKey
+...
