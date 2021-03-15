@@ -35,7 +35,7 @@ Resources:
     Type: AWS::IAM::AccessKey
     Properties:
       UserName: !Ref UserName
-    DependsOn: DefaultUser
+    DependsOn: s3User
 Outputs:
   UserName:
     Value: !Ref UserName
